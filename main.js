@@ -44,9 +44,9 @@ objLoader.load('textures/houses.obj', (object) => {
 
 // Texture Loader
 const textureLoader = new THREE.TextureLoader();
-const stoneTexture = textureLoader.load('textures/stone.jpg'); 
-const woodTexture = textureLoader.load('textures/wood.jpg');    
-const grassTexture = textureLoader.load('textures/grass.jpg'); 
+const stoneTexture = textureLoader.load('/textures/stone.jpg'); 
+const woodTexture = textureLoader.load('/textures/wood.jpg');    
+const grassTexture = textureLoader.load('/textures/grass.jpg'); 
 
 // Grass platform
 const grassGeometry = new THREE.PlaneGeometry(40, 40);
