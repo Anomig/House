@@ -37,7 +37,7 @@ scene.add(pointLight);
 
 //OBJ
 const objLoader = new OBJLoader();
-objLoader.load('textures/houses.obj', (object) => {
+objLoader.load('/images/houses.obj', (object) => {
     object.scale.set(0.05, 0.05, 0.05);
     object.position.set(0, 0, -10);
     scene.add(object);});
