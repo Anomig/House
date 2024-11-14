@@ -44,9 +44,9 @@ objLoader.load('textures/houses.obj', (object) => {
 
 // Texture Loader
 const textureLoader = new THREE.TextureLoader();
-const stoneTexture = textureLoader.load('/textures/stone.jpg'); 
-const woodTexture = textureLoader.load('/textures/wood.jpg');    
-const grassTexture = textureLoader.load('/textures/grass.jpg'); 
+const stoneTexture = textureLoader.load('.static/images/stone.jpg'); 
+const woodTexture = textureLoader.load('.static/images/wood.jpg');    
+const grassTexture = textureLoader.load('.static/images/grass.jpg'); 
 
 // Grass platform
 const grassGeometry = new THREE.PlaneGeometry(40, 40);
@@ -266,7 +266,7 @@ floor.position.y = -0.5;
 scene.add(floor);
 
 //picture
-const paintingTexture = textureLoader.load('textures/image.jpg');
+const paintingTexture = textureLoader.load('.static/images/image.jpg');
 const paintingGeometry = new THREE.BoxGeometry(2.5, 3, 0);
 const paintingMaterial = new THREE.MeshStandardMaterial({ map: paintingTexture });
 const painting = new THREE.Mesh(paintingGeometry, paintingMaterial);
