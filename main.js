@@ -44,9 +44,9 @@ objLoader.load('textures/houses.obj', (object) => {
 
 // Texture Loader
 const textureLoader = new THREE.TextureLoader();
-const stoneTexture = textureLoader.load('/stone.jpg'); 
-const woodTexture = textureLoader.load('/wood.jpg');    
-const grassTexture = textureLoader.load('/grass.jpg'); 
+const stoneTexture = textureLoader.load('/images/stone.jpg'); 
+const woodTexture = textureLoader.load('/images/wood.jpg');    
+const grassTexture = textureLoader.load('/images/grass.jpg'); 
 
 // Grass platform
 const grassGeometry = new THREE.PlaneGeometry(40, 40);
@@ -208,7 +208,7 @@ function createFence(x, z) {
     const fenceMaterial = new THREE.MeshStandardMaterial({ color: 0x8b5a2b });
 }
 // Material for the fence (wood texture for realism)
-const fenceWoodTexture = textureLoader.load('textures/wood.jpg');
+const fenceWoodTexture = textureLoader.load('/images/wood.jpg');
 fenceWoodTexture.wrapS = fenceWoodTexture.wrapT = THREE.RepeatWrapping;
 fenceWoodTexture.repeat.set(1, 1);
 const fenceMaterial = new THREE.MeshStandardMaterial({ map: fenceWoodTexture });
@@ -266,7 +266,7 @@ floor.position.y = -0.5;
 scene.add(floor);
 
 //picture
-const paintingTexture = textureLoader.load('textures/image.jpg');
+const paintingTexture = textureLoader.load('/images/image.jpg');
 const paintingGeometry = new THREE.BoxGeometry(2.5, 3, 0);
 const paintingMaterial = new THREE.MeshStandardMaterial({ map: paintingTexture });
 const painting = new THREE.Mesh(paintingGeometry, paintingMaterial);
