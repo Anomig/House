@@ -4,7 +4,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import gsap from 'gsap';
 
-//create a scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(8, 6, 15);
@@ -14,8 +13,8 @@ renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Controls
-camera.position.set(20, 15, 30);  // Startpositie van de camera ver weg van het huis
+
+camera.position.set(20, 15, 30);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 
@@ -36,7 +35,7 @@ pointLight.position.set(0, 2, 2);
 pointLight.castShadow = true;
 scene.add(pointLight);
 
-// //OBJ
+//OBJ
 const objLoader = new OBJLoader();
 objLoader.load('textures/houses.obj', (object) => {
     object.scale.set(0.05, 0.05, 0.05);
@@ -45,9 +44,9 @@ objLoader.load('textures/houses.obj', (object) => {
 
 // Texture Loader
 const textureLoader = new THREE.TextureLoader();
-const stoneTexture = textureLoader.load('textures/stone.jpg');   // Use a stone texture for walls
-const woodTexture = textureLoader.load('textures/wood.jpg');     // Use a wood texture for roof
-const grassTexture = textureLoader.load('textures/grass.jpg');   // Grass texture for the ground
+const stoneTexture = textureLoader.load('textures/stone.jpg'); 
+const woodTexture = textureLoader.load('textures/wood.jpg');    
+const grassTexture = textureLoader.load('textures/grass.jpg'); 
 
 // Grass platform
 const grassGeometry = new THREE.PlaneGeometry(40, 40);
@@ -112,7 +111,7 @@ function createWindow(x, y, z) {
 }
 
 createWindow(2, 0.8, 3);
-createWindow(-2, 0.8, 3); // Extra raam aan andere kant
+createWindow(-2, 0.8, 3);
 
 function createFlowerBox(x, y, z) {
     const boxGeometry = new THREE.BoxGeometry(1, 0.3, 0.3);
@@ -122,9 +121,9 @@ function createFlowerBox(x, y, z) {
     flowerBox.castShadow = true;
     scene.add(flowerBox);
 
-    // Bloemen
+    // flowers
     for (let i = -0.3; i <= 0.3; i += 0.3) {
-        const flowerGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+        const flowerGeometry = new THREE.SphereGeometry(0.1, 7, 7);
         const flowerMaterial = new THREE.MeshStandardMaterial({ color: 0xff69b4 });
         const flower = new THREE.Mesh(flowerGeometry, flowerMaterial);
         flower.position.set(x + i, y + 0.2, z + 0.15);
@@ -133,9 +132,8 @@ function createFlowerBox(x, y, z) {
     }
 }
 
-createFlowerBox(2, 0.5, 3.1);  // Onder het raam
-createFlowerBox(-2, 0.5, 3.1); // Ander raam
-
+createFlowerBox(2, 0.5, 3.1);  
+createFlowerBox(-2, 0.5, 3.1); 
 function createGutter(x, y, z) {
     const gutterGeometry = new THREE.CylinderGeometry(0.05, 0.05, 3, 8);
     const gutterMaterial = new THREE.MeshStandardMaterial({ color: 0x555555 });
@@ -145,10 +143,10 @@ function createGutter(x, y, z) {
     scene.add(gutter);
 }
 
-createGutter(3, 2, -2.5); // Regenpijp aan zijkant van het huis
+createGutter(3, 2, -2.5); 
 createGutter(-3, 2, -2.5);
 
-// Tafel
+// Table
 const tableGeometry = new THREE.BoxGeometry(1.5, 0.1, 1);
 const tableMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
 const table = new THREE.Mesh(tableGeometry, tableMaterial);
@@ -156,7 +154,7 @@ table.position.set(0, -0.2, 1);
 table.castShadow = true;
 scene.add(table);
 
-// Stoelen
+// Chairs
 function createChair(x, z) {
     const chairSeatGeometry = new THREE.BoxGeometry(0.5, 0.1, 0.5);
     const chairMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
@@ -172,10 +170,10 @@ function createChair(x, z) {
     scene.add(seat, back);
 }
 
-createChair(0.6, 1.5);   // Plaats stoelen rondom de tafel
+createChair(0.6, 1.5);  
 createChair(-0.6, 1.5);
 
-// Deurknop
+// Doorknob
 const knobGeometry = new THREE.SphereGeometry(0.05, 8, 8);
 const knobMaterial = new THREE.MeshStandardMaterial({ color: 0xDAA520 });
 const knob = new THREE.Mesh(knobGeometry, knobMaterial);
@@ -188,21 +186,12 @@ const lanternMaterial = new THREE.MeshStandardMaterial({ color: 0x333333 });
 const lantern = new THREE.Mesh(lanternGeometry, lanternMaterial);
 lantern.position.set(-0.8, 1.5, 3.1);
 
-// Licht in de lantaarn
+// light in latern
 const lanternLight = new THREE.PointLight(0xffd700, 0.5, 5);
 lanternLight.position.set(-0.8, 1.5, 3.1);
 lanternLight.castShadow = true;
 
 scene.add(lantern, lanternLight);
-
-// Vloerkleed
-const rugGeometry = new THREE.PlaneGeometry(2, 2);
-const rugMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4520 });
-const rug = new THREE.Mesh(rugGeometry, rugMaterial);
-rug.rotation.x = -Math.PI / 2;
-rug.position.set(0, -0.49, 1);
-scene.add(rug);
-
 
 // Chimney
 const chimneyGeometry = new THREE.BoxGeometry(0.5, 2, 0.5);
@@ -211,8 +200,6 @@ const chimney = new THREE.Mesh(chimneyGeometry, chimneyMaterial);
 chimney.position.set(-1, 4.5, -1.5);
 chimney.castShadow = true;
 scene.add(chimney);
-
-
 
 
 // Small fence
@@ -264,15 +251,11 @@ function createFenceSegment(x1, z1, x2, z2) {
     scene.add(bar1, bar2);
 }
 
-// Place fence segments around the house
-for (let i = -3; i <= 3; i += 1.2) {
-    createFenceSegment(i, 5, i + 1.2, 5);  // Front side
-    createFenceSegment(i, -5, i + 1.2, -5); // Back side
-}
-for (let j = -5; j <= 5; j += 1.2) {
-    createFenceSegment(-3.6, j, -3.6, j + 1.2); // Left side
-    createFenceSegment(3.6, j, 3.6, j + 1.2); // Right side
-}
+// Plaats de heksegmenten
+createFenceSegment(-6, -6, 6, -6);
+createFenceSegment(-6, 6, 6, 6);
+createFenceSegment(-6, -6, -6, 6);
+createFenceSegment(6, -6, 6, 6);
 
 // Binnenvloer
 const floorGeometry = new THREE.PlaneGeometry(6, 6);
@@ -290,16 +273,6 @@ const painting = new THREE.Mesh(paintingGeometry, paintingMaterial);
 painting.position.set(0, 1.5, 0);
 painting.castShadow = true;
 scene.add(painting);
-
-// Place fence posts around the house
-for (let i = -3; i <= 3; i += 0.6) {
-    createFence(i, 5);
-    createFence(i, -5);
-}
-for (let j = -5; j <= 5; j += 0.6) {
-    createFence(-3.5, j);
-    createFence(3.5, j);
-}
 
 // Tree
 const trunkGeometry = new THREE.CylinderGeometry(0.3, 0.5, 2, 8);
